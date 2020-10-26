@@ -60,10 +60,11 @@ The last step is to install the prompt theme.
 You can find the directory that the theme needs to be installed to by entering the following into powershell:
 
 ```powershell
-PS > $ThemeSettings
+PS > $ThemeSettings.MyThemesLocation
 ```
 
-Navigate to the `CurrentThemeLocation` folder and copy over the `PINPAL.psm1` file from this repo to your `CurrentThemeLocation` folder.
+Navigate to the `MyThemesLocation` folder and copy over the `PINPAL.psm1` file from this repo.
+If this folder does not exist you may have to create it.
 
 The final step is to enable the theme which can be done by entering the following into powershell:
 

@@ -13,48 +13,48 @@ function Write-Theme {
 
     #check the last command state and indicate if failed
     If ($lastCommandFailed) {
-        $prompt += Write-Prompt -Object " ! " -ForegroundColor $pp.Colors.LightForegroundColor -BackgroundColor $pp.Colors.CommandFailedIconForegroundColor
+        $prompt += Write-Prompt -Object " ! " -ForegroundColor $sl.Colors.LightForegroundColor -BackgroundColor $sl.Colors.CommandFailedIconForegroundColor
         # Writes the postfix (>) to the prompt
-        $prompt += Write-Prompt -Object $pp.PromptSymbols.SegmentForwardSymbol -ForegroundColor $pp.Colors.CommandFailedIconForegroundColor -BackgroundColor $pp.Colors.BackgroundColor
-        $prompt += Write-Prompt -Object "$($pp.PromptSymbols.SegmentForwardSymbol)" -BackgroundColor $pp.Colors.LightForegroundColor -ForegroundColor $pp.Colors.DarkForegroundColor
+        $prompt += Write-Prompt -Object $sl.PromptSymbols.SegmentForwardSymbol -ForegroundColor $sl.Colors.CommandFailedIconForegroundColor -BackgroundColor $sl.Colors.BackgroundColor
+        $prompt += Write-Prompt -Object "$($sl.PromptSymbols.SegmentForwardSymbol)" -BackgroundColor $sl.Colors.LightForegroundColor -ForegroundColor $sl.Colors.DarkForegroundColor
     }
 
 
     #check for elevated prompt
     If (Test-Administrator) {
         # Writes the elevated prompt indicator symbol
-        $prompt += Write-Prompt -Object " $($pp.PromptSymbols.UnlockedSymbol) " -ForegroundColor $pp.Colors.DarkForegroundColor -BackgroundColor $pp.Colors.LightForegroundColor
+        $prompt += Write-Prompt -Object " $($sl.PromptSymbols.UnlockedSymbol) " -ForegroundColor $sl.Colors.DarkForegroundColor -BackgroundColor $sl.Colors.LightForegroundColor
     }
     else {
         # Writes the locked prompt indicator symbol
-        $prompt += Write-Prompt -Object " $($pp.PromptSymbols.LockedSymbol) " -ForegroundColor $pp.Colors.DarkForegroundColor -BackgroundColor $pp.Colors.LightForegroundColor
+        $prompt += Write-Prompt -Object " $($sl.PromptSymbols.LockedSymbol) " -ForegroundColor $sl.Colors.DarkForegroundColor -BackgroundColor $sl.Colors.LightForegroundColor
     }
 
     # Writes the postfix (>) to the prompt
-    $prompt += Write-Prompt -Object $pp.PromptSymbols.SegmentForwardSymbol -ForegroundColor $pp.Colors.LightForegroundColor -BackgroundColor $pp.Colors.HostnameBackgroundColor
+    $prompt += Write-Prompt -Object $sl.PromptSymbols.SegmentForwardSymbol -ForegroundColor $sl.Colors.LightForegroundColor -BackgroundColor $sl.Colors.HostnameBackgroundColor
     
-    if (Test-NotDefaultUser($pp.CurrentUser)) {
+    if (Test-NotDefaultUser($sl.CurrentUser)) {
         # Writes hostname
-        $prompt += Write-Prompt -Object " $($pp.CurrentHostname) " -ForegroundColor $pp.Colors.LightForegroundColor -BackgroundColor $pp.Colors.HostnameBackgroundColor
+        $prompt += Write-Prompt -Object " $($sl.CurrentHostname) " -ForegroundColor $sl.Colors.LightForegroundColor -BackgroundColor $sl.Colors.HostnameBackgroundColor
         # Writes the postfix (>) to the prompt
-        $prompt += Write-Prompt -Object $pp.PromptSymbols.SegmentForwardSymbol -ForegroundColor $pp.Colors.HostnameBackgroundColor -BackgroundColor $pp.Colors.UsernameBackgroundColor
+        $prompt += Write-Prompt -Object $sl.PromptSymbols.SegmentForwardSymbol -ForegroundColor $sl.Colors.HostnameBackgroundColor -BackgroundColor $sl.Colors.UsernameBackgroundColor
         # Writes the user symbol
-        $prompt += Write-Prompt -Object " $($pp.PromptSymbols.UserSymbol) " -ForegroundColor $pp.Colors.LightForegroundColor -BackgroundColor $pp.Colors.UsernameBackgroundColor
+        $prompt += Write-Prompt -Object " $($sl.PromptSymbols.UserSymbol) " -ForegroundColor $sl.Colors.LightForegroundColor -BackgroundColor $sl.Colors.UsernameBackgroundColor
         # Writes username
-        $prompt += Write-Prompt -Object "$($pp.CurrentUser) " -ForegroundColor $pp.Colors.LightForegroundColor -BackgroundColor $pp.Colors.UsernameBackgroundColor
+        $prompt += Write-Prompt -Object "$($sl.CurrentUser) " -ForegroundColor $sl.Colors.LightForegroundColor -BackgroundColor $sl.Colors.UsernameBackgroundColor
     }
 
     # Writes the postfix (>) to the prompt
-    $prompt += Write-Prompt -Object $pp.PromptSymbols.SegmentForwardSymbol -ForegroundColor $pp.Colors.UsernameBackgroundColor -BackgroundColor $pp.Colors.BackgroundColor
-    $prompt += Write-Prompt -Object "$($pp.PromptSymbols.SegmentForwardSymbol)" -BackgroundColor $pp.Colors.DriveBackgroundColor -ForegroundColor $pp.Colors.DarkForegroundColor
+    $prompt += Write-Prompt -Object $sl.PromptSymbols.SegmentForwardSymbol -ForegroundColor $sl.Colors.UsernameBackgroundColor -BackgroundColor $sl.Colors.BackgroundColor
+    $prompt += Write-Prompt -Object "$($sl.PromptSymbols.SegmentForwardSymbol)" -BackgroundColor $sl.Colors.DriveBackgroundColor -ForegroundColor $sl.Colors.DarkForegroundColor
 
     # Writes the drive letter
-    $prompt += Write-Prompt -Object ' ' -ForegroundColor $pp.Colors.LightForegroundColor -BackgroundColor $pp.Colors.DriveBackgroundColor
-    $prompt += Write-Prompt -Object ($pwd.drive.name) -ForegroundColor $pp.Colors.LightForegroundColor -BackgroundColor $pp.Colors.DriveBackgroundColor
-    $prompt += Write-Prompt -Object ': ' -ForegroundColor $pp.Colors.LightForegroundColor -BackgroundColor $pp.Colors.DriveBackgroundColor
+    $prompt += Write-Prompt -Object ' ' -ForegroundColor $sl.Colors.LightForegroundColor -BackgroundColor $sl.Colors.DriveBackgroundColor
+    $prompt += Write-Prompt -Object ($pwd.drive.name) -ForegroundColor $sl.Colors.LightForegroundColor -BackgroundColor $sl.Colors.DriveBackgroundColor
+    $prompt += Write-Prompt -Object ': ' -ForegroundColor $sl.Colors.LightForegroundColor -BackgroundColor $sl.Colors.DriveBackgroundColor
 
     # Writes the postfix (>) to the prompt
-    $prompt += Write-Prompt -Object $pp.PromptSymbols.SegmentForwardSymbol -ForegroundColor $pp.Colors.DriveBackgroundColor -BackgroundColor $pp.Colors.DirectoryBackgroundColor
+    $prompt += Write-Prompt -Object $sl.PromptSymbols.SegmentForwardSymbol -ForegroundColor $sl.Colors.DriveBackgroundColor -BackgroundColor $sl.Colors.DirectoryBackgroundColor
 
     # Finds current directory
     $directory = (Get-FullPath -dir $pwd)
@@ -65,48 +65,52 @@ function Write-Theme {
         $directory = '~'
     }
     # Writes the directory
-    $prompt += Write-Prompt -Object " $($pp.PromptSymbols.FolderSymbol) " -ForegroundColor $pp.Colors.DarkForegroundColor -BackgroundColor $pp.Colors.DirectoryBackgroundColor
-    $prompt += Write-Prompt -Object "$directory" -ForegroundColor $pp.Colors.DarkForegroundColor -BackgroundColor $pp.Colors.DirectoryBackgroundColor
-    $prompt += Write-Prompt -Object ' ' -ForegroundColor $pp.Colors.DarkForegroundColor -BackgroundColor $pp.Colors.DirectoryBackgroundColor
-    $lastColor = $pp.Colors.DirectoryBackgroundColor
+    $prompt += Write-Prompt -Object " $($sl.PromptSymbols.FolderSymbol) " -ForegroundColor $sl.Colors.DarkForegroundColor -BackgroundColor $sl.Colors.DirectoryBackgroundColor
+    $prompt += Write-Prompt -Object "$directory" -ForegroundColor $sl.Colors.DarkForegroundColor -BackgroundColor $sl.Colors.DirectoryBackgroundColor
+    $prompt += Write-Prompt -Object ' ' -ForegroundColor $sl.Colors.DarkForegroundColor -BackgroundColor $sl.Colors.DirectoryBackgroundColor
+    $lastColor = $sl.Colors.DirectoryBackgroundColor
 
     # Writes the Github prompt
     $status = Get-VCSStatus
 
     if ($status) {
         # Writes the postfix (>) to the prompt
-        $prompt += Write-Prompt -Object $pp.PromptSymbols.SegmentForwardSymbol -ForegroundColor $pp.Colors.DirectoryBackgroundColor -BackgroundColor $pp.Colors.BackgroundColor
-        $prompt += Write-Prompt -Object "$($pp.PromptSymbols.SegmentForwardSymbol)" -BackgroundColor $pp.Colors.LightForegroundColor -ForegroundColor $pp.Colors.DarkForegroundColor
+        $prompt += Write-Prompt -Object $sl.PromptSymbols.SegmentForwardSymbol -ForegroundColor $sl.Colors.DirectoryBackgroundColor -BackgroundColor $sl.Colors.BackgroundColor
+        $prompt += Write-Prompt -Object "$($sl.PromptSymbols.SegmentForwardSymbol)" -BackgroundColor $sl.Colors.LightForegroundColor -ForegroundColor $sl.Colors.DarkForegroundColor
         # Writes the Github Logo
-        $prompt += Write-Prompt -Object " $($pp.PromptSymbols.GitSymbol) " -ForegroundColor $pp.Colors.DarkForegroundColor -BackgroundColor $pp.Colors.LightForegroundColor
+        $prompt += Write-Prompt -Object " $($sl.PromptSymbols.GitSymbol) " -ForegroundColor $sl.Colors.DarkForegroundColor -BackgroundColor $sl.Colors.LightForegroundColor
         # Fetch Github Status
         $themeInfo = Get-VcsInfo -status ($status)
         # Writes the postfix (>) to the prompt
-        $prompt += Write-Prompt -Object $pp.PromptSymbols.SegmentForwardSymbol -ForegroundColor $pp.Colors.LightForegroundColor -BackgroundColor $themeInfo.BackgroundColor
+        $prompt += Write-Prompt -Object $sl.PromptSymbols.SegmentForwardSymbol -ForegroundColor $sl.Colors.LightForegroundColor -BackgroundColor $themeInfo.BackgroundColor
         # Writes Github status
-        $prompt += Write-Prompt -Object " $($themeInfo.VcInfo) " -BackgroundColor $themeInfo.BackgroundColor -ForegroundColor $pp.Colors.DarkForegroundColor
+        $prompt += Write-Prompt -Object " $($themeInfo.VcInfo) " -BackgroundColor $themeInfo.BackgroundColor -ForegroundColor $sl.Colors.GitForegroundColor
         # Sets the final color
         $lastColor = $themeInfo.BackgroundColor
     }
 
     # Writes the postfix (>) to the prompt
-    $prompt += Write-Prompt -Object $pp.PromptSymbols.SegmentForwardSymbol -ForegroundColor $lastColor
+    $prompt += Write-Prompt -Object $sl.PromptSymbols.SegmentForwardSymbol -ForegroundColor $lastColor
     $prompt += ' '
     $prompt
 }
 
-$pp = $global:ThemeSettings #local settings
+$sl = $global:ThemeSettings #local settings
 # Symbols
-$pp.PromptSymbols.UserSymbol = [char]::ConvertFromUtf32(0xf007)
-$pp.PromptSymbols.FolderSymbol = [char]::ConvertFromUtf32(0xf07c)
-$pp.PromptSymbols.UnlockedSymbol = [char]::ConvertFromUtf32(0xf13e)
-$pp.PromptSymbols.LockedSymbol = [char]::ConvertFromUtf32(0xf023)
-$pp.PromptSymbols.SegmentForwardSymbol = [char]::ConvertFromUtf32(0xE0B0)
-$pp.PromptSymbols.GitSymbol = [char]::ConvertFromUtf32(0xf418)
+$sl.PromptSymbols.UserSymbol = [char]::ConvertFromUtf32(0xf007)
+$sl.PromptSymbols.FolderSymbol = [char]::ConvertFromUtf32(0xf07c)
+$sl.PromptSymbols.UnlockedSymbol = [char]::ConvertFromUtf32(0xf13e)
+$sl.PromptSymbols.LockedSymbol = [char]::ConvertFromUtf32(0xf023)
+$sl.PromptSymbols.SegmentForwardSymbol = [char]::ConvertFromUtf32(0xE0B0)
+$sl.PromptSymbols.GitSymbol = [char]::ConvertFromUtf32(0xf418)
 # Colors
-$pp.Colors.DarkForegroundColor = [ConsoleColor]::Black
-$pp.Colors.LightForegroundColor = [ConsoleColor]::White
-$pp.Colors.HostnameBackgroundColor = [System.ConsoleColor]::Gray
-$pp.Colors.UsernameBackgroundColor = [System.ConsoleColor]::DarkGray
-$pp.Colors.DirectoryBackgroundColor = [System.ConsoleColor]::Blue
-$pp.Colors.DriveBackgroundColor = [System.ConsoleColor]::DarkBlue
+$sl.Colors.DarkForegroundColor = [ConsoleColor]::Black
+$sl.Colors.LightForegroundColor = [ConsoleColor]::White
+$sl.Colors.HostnameBackgroundColor = [ConsoleColor]::Gray
+$sl.Colors.UsernameBackgroundColor = [ConsoleColor]::DarkGray
+$sl.Colors.DirectoryBackgroundColor = [ConsoleColor]::Blue
+$sl.Colors.DriveBackgroundColor = [ConsoleColor]::DarkBlue
+$sl.Colors.GitDefaultColor = [ConsoleColor]::Gray
+$sl.Colors.GitForegroundColor = [ConsoleColor]::White
+$sl.Colors.GitLocalChangesColor = [ConsoleColor]::Gray
+$sl.Colors.GitNoLocalChangesAndAheadColor = [ConsoleColor]::DarkRed
