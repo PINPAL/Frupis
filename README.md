@@ -73,4 +73,4 @@ PS > Set-Theme PINPAL
 
 ## Preview
 
-![Preview Image](./preview.png)
+![Preview Image](./Preview.png)
