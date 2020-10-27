@@ -20,12 +20,19 @@ function Add-Spaces([String]$text, $length) {
 # Begin Installation
 Write-Host "`n" -nonewline
 Write-Progress -progress 0 -step "Initialising Installation" -stepDetail "Setting Up"
+# Setup temporary install path
 $InstallPath = "~/Frupis"
 if (!(Test-Path -Path $InstallPath )) {
     new-item -path ~/. -name Frupis -itemtype directory > $null
 }
-if (!(Get-Module PowerShellGet)) {
+# Get Dependencies
+Write-Progress -progress 2 -step "Checking Dependencies" -stepDetail "PSReadLine"
+if (!(Get-PackageProvider NuGet)) {
     Write-Progress -progress 5 -step "Installing Dependencies" -stepDetail "PowerShellGet"
+    Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
+}
+if (!(Get-Module PowerShellGet)) {
+    Write-Progress -progress 7 -step "Installing Dependencies" -stepDetail "PowerShellGet"
     Install-Module PowerShellGet -Scope CurrentUser -Force -AllowClobber
 }
 Write-Progress -progress 10 -step "Checking Dependencies" -stepDetail "PSReadLine"
@@ -39,7 +46,6 @@ if ((Get-Module PSReadLine)) {
 }
 Write-Progress -progress 20 -step "Checking Dependencies" -stepDetail "Posh Git"
 if (!(Get-Module posh-git)) {
-    Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
     Write-Progress -progress 25 -step "Installing Dependencies" -stepDetail "Posh Git"
     Install-Module posh-git -Scope CurrentUser -Force
 }
