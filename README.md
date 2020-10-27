@@ -67,6 +67,8 @@ PS > $ThemeSettings.MyThemesLocation
 Navigate to the `MyThemesLocation` folder and copy over the `Frupis.psm1` file from this repo.
 If this folder does not exist you may have to create it.
 
+Finally, relaunch Powershell to see your changes take effect.
+
 ### **Optional**
 
 The following steps are for installing correct colors to VSCode Integrated Terminal. This can be used to overwrite your VS theme colours.
