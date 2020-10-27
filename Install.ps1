@@ -24,17 +24,22 @@ $InstallPath = "~/Frupis"
 if (!(Test-Path -Path $InstallPath )) {
     new-item -path ~/. -name Frupis -itemtype directory > $null
 }
+if (!(Get-Module PowerShellGet)) {
+    Write-Progress -progress 5 -step "Installing Dependencies" -stepDetail "PowerShellGet"
+    Install-Module PowerShellGet -Scope CurrentUser -Force -AllowClobber
+}
 Write-Progress -progress 10 -step "Checking Dependencies" -stepDetail "PSReadLine"
 if ((Get-Module PSReadLine)) {
     if (!(Get-InstalledModule -Name PSReadLine -MinimumVersion 2.0.0)) {
         Write-Progress -progress 15 -step "Install Dependencies" -stepDetail "PSReadLine"
-        Install-Module -Name PSReadLine -AllowPrerelease -Scope CurrentUser -Force -SkipPublisherCheck
+        Install-Module PSReadLine -AllowPrerelease -Scope CurrentUser -Force -SkipPublisherCheck
     }
 } else {
-    Install-Module -Name PSReadLine -AllowPrerelease -Scope CurrentUser -Force -SkipPublisherCheck
+    Install-Module PSReadLine -AllowPrerelease -Scope CurrentUser -Force -SkipPublisherCheck
 }
 Write-Progress -progress 20 -step "Checking Dependencies" -stepDetail "Posh Git"
 if (!(Get-Module posh-git)) {
+    Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
     Write-Progress -progress 25 -step "Installing Dependencies" -stepDetail "Posh Git"
     Install-Module posh-git -Scope CurrentUser -Force
 }
