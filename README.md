@@ -79,33 +79,30 @@ The following steps are for installing correct colors to VSCode Integrated Termi
 Open the Command Pallette (`Ctrl+Shift+P`) and type in `Open Settings (JSON)`
 Once the `settings.json` file is open you add the following lines within the main settings object:
 
-```javascript
-    {
-        // terminal font
-        "terminal.integrated.fontFamily": "'CaskaydiaCove NF', 'Consolas', monospace",
-        // override terminal colors from theme
-        "workbench.colorCustomizations": {
-            "terminal.background":"#282C34",
-            "terminal.ansiBlack": "#282C34",
-            "terminal.foreground":"#F6F9FF",
-            "terminal.ansiBlue":"#1672AF",
-            "terminal.ansiBrightBlue":"#61AFEF",
-            "terminal.ansiBrightBlack":"#424855",
-            "terminal.ansiRed": "#E06C75",
-            "terminal.ansiWhite": "#5A6374",
-        }
-    }
+```json
+{
+  // terminal font
+  "terminal.integrated.fontFamily": "'CaskaydiaCove NF', 'Consolas', monospace",
+  // override terminal colors from theme
+  "workbench.colorCustomizations": {
+    "terminal.background": "#282C34",
+    "terminal.ansiBlack": "#282C34",
+    "terminal.foreground": "#F6F9FF",
+    "terminal.ansiBlue": "#1672AF",
+    "terminal.ansiBrightBlue": "#61AFEF",
+    "terminal.ansiBrightBlack": "#424855",
+    "terminal.ansiRed": "#E06C75",
+    "terminal.ansiWhite": "#5A6374"
+  }
+}
 ```
 
 You can change the fontFamily to fit your desired font but you must again make sure that you are using a font that has both powerline support and Nerd Fonts.
 
 ## Preview
 
+<img src="./screenshots/Powershell.png">
+
 </br>
-<p style="margin-left: 30px">Powershell</p>
-<img src="./Preview0.png">
 
-</br></br></br>
-
-<p style="margin-left: 30px">VSCode Inline Terminal</p>
-<img src="./Preview1.png">
+<img src="./screenshots/VSCode.png">
