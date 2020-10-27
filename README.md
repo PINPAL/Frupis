@@ -100,11 +100,11 @@ You can change the fontFamily to fit your desired font but you must again make s
 ## Preview
 
 > </br>
-> <h2 style="font-size:12pt" align="center">Powershell</h2>
-> <img src="./Preview0.png" align="center" style="margin-bottom:20px">
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Powershell
+> <img src="./Preview0.png" align="center">
 
 </br>
 
 > </br>
-> <h2 style="font-size:12pt" align="center">VSCode Inline Terminal</h2>
-> <img src="./Preview1.png" align="center" style="margin-bottom:20px">
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VSCode Inline Terminal
+> <img src="./Preview1.png" align="center">
