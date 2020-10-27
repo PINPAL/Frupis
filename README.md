@@ -72,6 +72,39 @@ The final step is to enable the theme which can be done by entering the followin
 PS > Set-Theme PINPAL
 ```
 
+### **Optional**
+
+The following steps are for installing correct colors to VSCode Integrated Terminal. This can be used to overwrite your VS theme colours.
+
+Open the Command Pallette (`Ctrl+Shift+P`) and type in `Open Settings (JSON)`
+Once the `settings.json` file is open you add the following lines within the main settings object:
+
+```json
+    // terminal font
+    "terminal.integrated.fontFamily": "'CaskaydiaCove NF', 'Consolas', monospace",
+    // override terminal colors from theme
+    "workbench.colorCustomizations": {
+        "terminal.background":"#282C34",
+        "terminal.ansiBlack": "#282C34",
+        "terminal.foreground":"#F6F9FF",
+        "terminal.ansiBlue":"#1672AF",
+        "terminal.ansiBrightBlue":"#61AFEF",
+        "terminal.ansiBrightBlack":"#424855",
+        "terminal.ansiRed": "#E06C75",
+        "terminal.ansiWhite": "#5A6374",
+    },
+```
+
+You can change the fontFamily to fit your desired font but you must again make sure that you are using a font that has both powerline support and Nerd Fonts.
+
 ## Preview
 
-![Preview Image](./Preview.png)
+> </br>
+> <h2 style="font-size:12pt" align="center">Powershell</h2>
+> <img src="./Preview0.png" align="center" style="margin-bottom:20px">
+
+</br>
+
+> </br>
+> <h2 style="font-size:12pt" align="center">VSCode Inline Terminal</h2>
+> <img src="./Preview1.png" align="center" style="margin-bottom:20px">
