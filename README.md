@@ -47,7 +47,7 @@ Set-PSReadlineOption -Color @{
 Once you have configured your profile you will need to install the theme colors.
 To do this unzip the ColorTool fill and navigate to the folder that contains the exectuable and the `schemes` folder.
 
-You can then copy over the contents of the `schemes` folder from this repo into the one from ColorTool.
+You can then copy over the `Frupis.itermcolors` file from this repo (`/src/schemes/Frupis.itermcolors`) into the schemes folder from ColorTool.
 
 Next open up powershell and navigate to the ColorTool directory. Execute the following command to install the theme.
 
@@ -64,7 +64,7 @@ You can find the directory that the theme needs to be installed to by entering t
 PS > $ThemeSettings.MyThemesLocation
 ```
 
-Navigate to the `MyThemesLocation` folder and copy over the `Frupis.psm1` file from this repo.
+Navigate to the `MyThemesLocation` folder and copy over the `Frupis.psm1` file from this repo (`/src/PostThemes/Frupis.psm1`).
 If this folder does not exist you may have to create it.
 
 Finally, relaunch Powershell to see your changes take effect.
@@ -95,7 +95,7 @@ Once the `settings.json` file is open you add the following lines within the mai
 }
 ```
 
-You can change the fontFamily to fit your desired font but you must again make sure that you are using a font that has both powerline support and Nerd Fonts.
+You can change the fontFamily to fit your desired font but you must again make sure that you are using a font that has both powerline support and patched with Nerd Fonts.
 
 ## Preview
 
