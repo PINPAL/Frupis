@@ -29,7 +29,7 @@ Import-Module posh-git
 Import-Module oh-my-posh
 
 # Setup Theme
-Set-Theme PINPAL
+Set-Theme Frupis
 
 # Setup Prompt colors
 Set-PSReadlineOption -Color @{
@@ -52,7 +52,7 @@ You can then copy over the contents of the `schemes` folder from this repo into 
 Next open up powershell and navigate to the ColorTool directory. Execute the following command to install the theme.
 
 ```powershell
-PS > ./ColorTool.exe -b PINPAL.itermcolors
+PS > ./ColorTool.exe -b Frupis.itermcolors
 ```
 
 You should now see that your terminal is nicely coloured.
@@ -64,14 +64,8 @@ You can find the directory that the theme needs to be installed to by entering t
 PS > $ThemeSettings.MyThemesLocation
 ```
 
-Navigate to the `MyThemesLocation` folder and copy over the `PINPAL.psm1` file from this repo.
+Navigate to the `MyThemesLocation` folder and copy over the `Frupis.psm1` file from this repo.
 If this folder does not exist you may have to create it.
-
-The final step is to enable the theme which can be done by entering the following into powershell:
-
-```powershell
-PS > Set-Theme PINPAL
-```
 
 ### **Optional**
 
