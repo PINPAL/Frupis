@@ -27,9 +27,9 @@ if (!(Test-Path -Path $InstallPath )) {
 }
 # Get Dependencies
 Write-Progress -progress 2 -step "Checking Dependencies" -stepDetail "PSReadLine"
-if (!(Get-PackageProvider NuGet)) {
+if (!(Get-PackageProvider NuGet -Force -ForceBootstrap)) {
     Write-Progress -progress 5 -step "Installing Dependencies" -stepDetail "PowerShellGet"
-    Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
+    Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force -ForceBootstrap
 }
 if (!(Get-Module PowerShellGet)) {
     Write-Progress -progress 7 -step "Installing Dependencies" -stepDetail "PowerShellGet"
