@@ -25,19 +25,23 @@ if (!(Test-Path -Path $InstallPath )) {
     new-item -path ~/. -name Frupis -itemtype directory > $null
 }
 Write-Progress -progress 10 -step "Checking Dependencies" -stepDetail "PSReadLine"
-if (!(Get-InstalledModule -Name PSReadLine -MinimumVersion 2.0.0)) {
-    Write-Progress -progress 15 -step "Install Dependencies" -stepDetail "PSReadLine"
+if ((Get-Module PSReadLine)) {
+    if (!(Get-InstalledModule -Name PSReadLine -MinimumVersion 2.0.0)) {
+        Write-Progress -progress 15 -step "Install Dependencies" -stepDetail "PSReadLine"
+        Install-Module -Name PSReadLine -AllowPrerelease -Scope CurrentUser -Force -SkipPublisherCheck
+    }
+} else {
     Install-Module -Name PSReadLine -AllowPrerelease -Scope CurrentUser -Force -SkipPublisherCheck
 }
 Write-Progress -progress 20 -step "Checking Dependencies" -stepDetail "Posh Git"
 if (!(Get-Module posh-git)) {
     Write-Progress -progress 25 -step "Installing Dependencies" -stepDetail "Posh Git"
-    Install-Module posh-git -Scope CurrentUser
+    Install-Module posh-git -Scope CurrentUser -Force
 }
 Write-Progress -progress 30 -step "Checking Dependencies" -stepDetail "Oh My Posh"
 if (!(Get-Module oh-my-posh)) {
     Write-Progress -progress 35 -step "Installing Dependencies" -stepDetail "Oh My Posh"
-    Install-Module oh-my-posh -Scope CurrentUser
+    Install-Module oh-my-posh -Scope CurrentUser -Force
 }
 Write-Progress -progress 40 -step "Checking Dependencies" -stepDetail "ColorTool"
 if (!(Test-Path -Path $InstallPath/ColorTool )) {
